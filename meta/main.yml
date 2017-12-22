@@ -1,0 +1,19 @@
+galaxy_info:
+  author: Cantoraz Chou
+  description: Ansible role to install Node.js for Ubuntu Linux
+
+  license: license (GPLv3)
+
+  min_ansible_version: 1.9
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+
+  galaxy_tags:
+    - node
+    - javascript
+    - js
+
+dependencies: []

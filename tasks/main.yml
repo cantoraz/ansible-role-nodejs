@@ -1,0 +1,25 @@
+---
+# This playbook will install Node.js
+
+- name: Add NodeSource package signing key
+  apt_key:
+    id: 68576280
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+
+- name: Add NodeSource APT repository
+  apt_repository:
+    repo: "{{ item }} https://deb.nodesource.com/{{ nodejs_version }} {{ ansible_lsb.codename }} main"
+    state: present
+    filename: nodesource
+    update_cache: no
+  with_items:
+    - deb
+    - deb-src
+
+- name: Update APT cache
+  apt: update_cache=yes
+  changed_when: false
+
+- name: Ensure Node.js is installed 
+  package: name=nodejs state=present
